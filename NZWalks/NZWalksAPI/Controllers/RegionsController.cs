@@ -192,5 +192,12 @@ namespace NZWalksAPI.Controllers
 
 
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Print()
+        {
+           
+            return Ok("App Deployed Successfully");
+        }
     }
 }
