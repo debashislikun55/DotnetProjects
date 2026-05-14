@@ -193,7 +193,7 @@ namespace NZWalksAPI.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("Demo")]
         public async Task<IActionResult> Print()
         {
            
