@@ -22,7 +22,7 @@ builder.Services.AddScoped<IWalkRepository,WalkRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions
 {
-    ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]
+    ConnectionString = builder.Configuration["ApplicationInsights:ConnectionString"]
 });
 
 builder.Services.AddApplicationInsightsTelemetry();

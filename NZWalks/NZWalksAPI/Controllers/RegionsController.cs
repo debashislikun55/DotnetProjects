@@ -20,7 +20,7 @@ namespace NZWalksAPI.Controllers
         private readonly ILogger _logger;
 
         public RegionsController(NZWalksDbContext nZWalksDbContext,IRegionRepository regionRepository,
-            IMapper mapper,ILogger logger)
+            IMapper mapper,ILogger<RegionsController> logger)
         {
             _dbcontext=nZWalksDbContext;
             this.regionRepository = regionRepository;
