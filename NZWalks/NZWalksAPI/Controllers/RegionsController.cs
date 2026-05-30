@@ -18,14 +18,16 @@ namespace NZWalksAPI.Controllers
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
         private readonly ILogger _logger;
+        private readonly IConfiguration _configuration;
 
         public RegionsController(NZWalksDbContext nZWalksDbContext,IRegionRepository regionRepository,
-            IMapper mapper,ILogger<RegionsController> logger)
+            IMapper mapper,ILogger<RegionsController> logger,IConfiguration configuration)
         {
             _dbcontext=nZWalksDbContext;
             this.regionRepository = regionRepository;
             this.mapper = mapper;
             _logger = logger;
+            _configuration=configuration;
 
         }
 
@@ -194,13 +196,15 @@ namespace NZWalksAPI.Controllers
                 );
 
 
+
         }
 
         [HttpGet("Demo")]
         public async Task<IActionResult> Print()
         {
-           
-            return Ok("App Deployed Successfully");
+
+            var result = _configuration["Greeting"];
+            return Ok(result);
         }
     }
 }
