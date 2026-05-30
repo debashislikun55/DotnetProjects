@@ -27,11 +27,12 @@ builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsigh
 
 //builder.Services.AddApplicationInsightsTelemetry();
 var app = builder.Build();
-
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+logger.LogCritical("APP STARTED SUCCESSFULLY");
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
+app.UseSwagger();
     app.UseSwaggerUI();
 //}
 
