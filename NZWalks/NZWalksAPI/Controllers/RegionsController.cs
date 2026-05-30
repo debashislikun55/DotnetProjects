@@ -55,7 +55,7 @@ namespace NZWalksAPI.Controllers
             //    });
             //}
             //  var result = regions.ToList();
-            _logger.LogInformation("Fetching the regions");
+            _logger.LogWarning("Fetching the regions");
             var regions = mapper.Map<List<RegionsDTO>>(domaindata);
             return Ok(regions);
         }
