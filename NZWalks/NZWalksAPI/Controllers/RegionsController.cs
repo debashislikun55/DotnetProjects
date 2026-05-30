@@ -17,13 +17,16 @@ namespace NZWalksAPI.Controllers
         private readonly NZWalksDbContext _dbcontext;
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
+        private readonly ILogger _logger;
 
         public RegionsController(NZWalksDbContext nZWalksDbContext,IRegionRepository regionRepository,
-            IMapper mapper)
+            IMapper mapper,ILogger logger)
         {
             _dbcontext=nZWalksDbContext;
             this.regionRepository = regionRepository;
             this.mapper = mapper;
+            _logger = logger;
+
         }
 
         [HttpGet]
@@ -51,8 +54,8 @@ namespace NZWalksAPI.Controllers
             //        code=region.code
             //    });
             //}
-          //  var result = regions.ToList();
-
+            //  var result = regions.ToList();
+            _logger.LogInformation("Fetching the regions");
             var regions = mapper.Map<List<RegionsDTO>>(domaindata);
             return Ok(regions);
         }

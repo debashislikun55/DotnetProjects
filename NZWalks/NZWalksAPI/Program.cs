@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using NZWalksAPI.AutoMapper;
 using NZWalksAPI.Data;
 using NZWalksAPI.Repositories;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,12 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksConncetio
 builder.Services.AddScoped<IRegionRepository, RegionRepository>();
 builder.Services.AddScoped<IWalkRepository,WalkRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions
+{
+    ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]
+});
+
+builder.Services.AddApplicationInsightsTelemetry();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
