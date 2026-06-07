@@ -13,7 +13,7 @@ namespace NZWalksAPI.Controllers
     {
         private readonly IMapper mapper;
         private readonly IWalkRepository walkRepository;
-
+        //demo
         public WalkController(IMapper mapper,IWalkRepository walkRepository)
         {
             this.mapper = mapper;
